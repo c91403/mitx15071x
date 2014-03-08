@@ -1,8 +1,8 @@
-ibm = read.csv("mitx15071x/week1/IBMStock.csv")
-ge = read.csv("mitx15071x/week1/GEStock.csv")
-pg = read.csv("mitx15071x/week1/ProcterGambleStock.csv")
-cc = read.csv("mitx15071x/week1/CocaColaStock.csv")
-boe = read.csv("mitx15071x/week1/BoeingStock.csv")
+ibm = read.csv("IBMStock.csv")
+ge = read.csv("GEStock.csv")
+pg = read.csv("ProcterGambleStock.csv")
+cc = read.csv("CocaColaStock.csv")
+boe = read.csv("BoeingStock.csv")
 
 ibm$Date = as.Date(ibm$Date, "%m/%d/%y")
 ge$Date = as.Date(ge$Date, "%m/%d/%y")
@@ -47,14 +47,19 @@ cc[which.max(cc$StockPrice),]
 # Around what year did Coca-Cola has its lowest stock price in this time period?
 cc[which.min(cc$StockPrice),]
 
-plot(cc$Date, cc$StockPrice, type='l'. col="red")
+plot(cc$Date, cc$StockPrice, type='l', col="red")
 lines(pg$Date, pg$StockPrice, col="blue")
 abline(v=as.Date(c("2000-03-01")), lwd=2)
+abline(v=as.Date(c("1983-01-01")), lwd=2)
 
 # In March of 2000, the technology bubble burst, and a stock market crash occurred.
 # According to this plot, which company's stock dropped more?
 # TODO: did not complete without graph
-
+plot(cc$Date[301:432], cc$StockPrice[301:432], type="l", col="red", ylim=c(0,210))
+lines(pg$Date[301:432], pg$StockPrice[301:432], col="blue")
+lines(boe$Date[301:432], boe$StockPrice[301:432], col="green")
+lines(ge$Date[301:432], ge$StockPrice[301:432], col="purple")
+lines(ibm$Date[301:432], ibm$StockPrice[301:432], col="orange")
 
 # 3.2 Which stock reaches the highest value in the time period 1995-2005?
 ibm[432,]
