@@ -13,7 +13,7 @@
 #    Latitude: the latitude of the location at which the crime occurred.
 #    Longitude: the longitude of the location at which the crime occurred.
 
-mvt = read.csv("mitx15071x/week1/mvtWeek1.csv");
+mvt = read.csv("mvtWeek1.csv");
 
 # How many rows of data (observations) are in this dataset?
 summary(mvt);
@@ -105,15 +105,13 @@ table(mvt$Month, mvt$Arrest)
 # Problem 3.1
 # First, let's make a histogram of the variable Date. We'll add an extra argument, to specify the number of bars we want in our histogram. In your R console, type
 #png("mitx15071x/week1/p3.png")
-jpeg("mitx15071x/week1/p3.jpg")
-hist(mvt$Date, breaks=100)
-dev.off()
+#jpeg("mitx15071x/week1/p3.jpg")
+hist(mvt$Date, breaks=100, main="3.1")
+#dev.off()
 # Looking at the histogram, answer the following questions.
 
-# Problem 3.1 cannot see graph
-# Problem 3.2 cannot see graph
-  # TODO: Create a boxplot of the variable "Date", sorted by the variable "Arrest"
-  
+boxplot(mvt$Date, mvt$Arrest, main="3.2")
+
 # Problem 3.3
 # For what fraction of motor vehicle thefts in 2001 was an arrest made? 
 table(subset(mvt, Year=2001)$Arrest);
