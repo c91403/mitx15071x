@@ -1,4 +1,4 @@
-poll = read.csv("mitx15071x/week1/AnonymityPoll.csv")
+poll = read.csv("AnonymityPoll.csv")
 
 # How many people participated in the poll?
 str(poll)
@@ -87,3 +87,7 @@ tapply(limited$Info.On.Internet, limited$Smartphone, summary)
 # Similarly use tapply to break down the Tried.Masking.Identity
 # variable for smartphone and non-smartphone users.
 tapply(limited$Tried.Masking.Identity, limited$Smartphone, summary)
+
+# plot Age against Info.On.Internet with plot(jitter(limited$Age), jitter(limited$Info.On.Internet)).
+# What relationship to you observe between Age and Info.On.Internet?
+plot(jitter(limited$Age), jitter(limited$Info.On.Internet))
