@@ -110,7 +110,7 @@ hist(mvt$Date, breaks=100, main="3.1")
 #dev.off()
 # Looking at the histogram, answer the following questions.
 
-boxplot(mvt$Date, mvt$Arrest, main="3.2")
+boxplot(mvt$Date ~ mvt$Arrest, main="3.2")
 
 # Problem 3.3
 # For what fraction of motor vehicle thefts in 2001 was an arrest made? 
