@@ -46,3 +46,16 @@ rmse4 = sqrt(sse4 / nrow(nba))
     
 # lets make predictions
 nbatest = read.csv("NBA_test.csv")
+
+# Make predictions on test set
+predictions = predict(pointsReg4, newdata=nbatest)
+
+# Compute out-of-sample R^2
+SSE = sum((predictions - nbatest$PTS)^2)
+SST = sum((mean(nba$PTS) - nbatest$PTS)^2)
+R2 = 1 - SSE/SST
+R2
+
+# Compute the RMSE
+RMSE = sqrt(SSE/nrow(nbatest))
+RMSE
