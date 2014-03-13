@@ -59,3 +59,6 @@ R2
 # Compute the RMSE
 RMSE = sqrt(SSE/nrow(nbatest))
 RMSE
+
+# notes 
+# model$residuals == trainingData$field - predict(model)
