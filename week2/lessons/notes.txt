@@ -1,0 +1,98 @@
+
+2.2.2 one variable linear regression
+    Regression Model
+        yi = beta(0) + beta(1)xi + epislon(i)
+            beta(0) == y intercept
+            beta(1) == slope
+            epislon == error
+    best model
+        SSE = sum of squared errors
+            = take sum of y difference from line to each point when x is fixed
+            = (error(1))^2 + (error(2))^2 + ... + (error(N))^2
+            - depends on N, units are hard to understand ==> hard to interpret
+        RMSE = root mean square error
+            = sqrt(SSE / N)
+    R^2
+        compared best model to baseline model
+        baseline model = average model of dependent variable (y)
+        SST = total sum of squares
+            = SSE for the baseline (fixed y = avg(y) value)
+        R^2 = 1 - (SSE / SST)
+            0 == no improvement over baseline using model
+            1 == perfect predictive model (no errors)
+2.2.3 multiple linear regression
+    yi = beta(0) + beta(1)xi_1 + beta(2)xi_2 + ... + beta(k)xi_k + epislon(i)
+        best model minimizes SSE
+        start with 1 variable and track R^2 as as we add one variable at a time
+        not all available variables should be used
+            may cause overfitting with high R^2, bad performance on unseen data
+        The model's R² value can never decrease from adding new variables to the model. This is due to the fact that it is always possible to set the coefficient for the new variable to zero in the new model. 
+2.2.5 understanding the model
+    look at the summary of a model
+        in the coefficients table:
+            1. if estimate value is very low, probably useless
+            2. t-value = estimate / std error
+                larger the t-value, more likely it is useful
+            3. Pr(>|t|), we want small values in this column
+            4. *** stars column is a summary of what is significant
+                3 stars is highest level of significance, this is the best
+                2 stars is second best
+                1 star is 3rd best
+                '.' [period] is almost significant, but not useful for this course
+                ' ' [blank] means not significant
+    correlation
+        measure of linear relationship between variables
+            +1 = perfect
+             0 = no relationship
+            -1 = negative
+        multicolinearity only applies to 2 independent variables
+            due to correlation, want to remove a variable one at a time
+2.2.6 making predictions
+    model4 R-squared = 0.83, pretty good
+        training data = data used to build model
+        test data = out of sample accuracy = new data
+    in training set, model (combination of variables) increased R-squared as we added more data
+        but does not apply with our test set
+        test data R-squared can be negative if really bad model
+            R² = 1 - SSE/SST
+            Since SSE and SST are the sums of squared terms, we know that both will be positive. ==> R² always <= 1.0
+            However, all other values are valid (even the negative ones!), since SSE can be more or less than SST, due to the fact that this is an out-of-sample R², not a model R².
+2.3.2 making it to the playoffs
+    1. how many games does a team need to win to make it to the playoffs?
+        95 games == almost certain
+        85 games == likely but not certain
+        105 games == definitely
+    2. how do you score more games than the opponent
+        135 (computed with R)
+2.3.3
+    when we know need rd = 135, how do you score more runs?
+        1. on base percentage (OBP) - on base including walks
+        2. slugging percentage (SLG) - # bases per hit
+    most teams used batting average, ignored walks -> overvalued
+        A's claimed OBP more important
+2.3.4
+    predicting runs and wins
+        since teams change before a season, how do we compute stats?
+            predict using 2001 player stats to computer OBP, SLG
+    moneyball 2002
+        computed obp, slg, oobp, oslg to predict rd
+            used model
+                wins = 80.881375 + 0.105766 * rd
+            predicted 100 wins
+                actual results pretty close
+    shows, using public data and analytics, can make good predictions in preseason
+2.3.5
+    can playoff stats predict performance in playoffs?
+        anything can happen in short series
+        1994-2011 correlation with world series win and reg series wins is 0.03, very low
+2.3.6
+    sabermetrics = general term for moneyball techniques
+2.4.4
+    prediction = generated vector from 1..testData.length()
+        based on a model variable
+        inserting arguments into the model from testData
+    sse = sum of squares between prediction and testData$field
+    sst = sum of squares between testData$field and avg(trainingData$field)
+    r2 = 1 - sse / sst
+        = how better is this model work using new data vs training data
+
